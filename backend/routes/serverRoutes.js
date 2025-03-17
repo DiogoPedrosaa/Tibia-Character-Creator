@@ -1,6 +1,6 @@
 const express = require('express');
 const {getServer,createServer,updateServer,deleteServer} = require('../controllers/serverController');
-const router = express.router();
+const router = express.Router();
 
 router.get('/', getServer);
 router.post('/', createServer);
