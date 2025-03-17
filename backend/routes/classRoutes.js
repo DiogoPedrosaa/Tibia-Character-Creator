@@ -6,3 +6,6 @@ router.get('/', getClasses);
 router.post('/', createClass);
 router.put('/:id', updateClass);
 router.delete('/:id', deleteClass);
+
+
+module.exports = router;
