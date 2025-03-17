@@ -1,24 +1,44 @@
-const characters = require("../models/characterModel");
+const Character = require("../models/characterModel");
 
 const getCharacters = async (req, res) => {
     try {
-        const charactersList = await Character.find().populate("server").populate("class");
-        res.json(charactersList);
-    } catch (error){
-        res.status(500).json({message: error.message});
+        const characters = await Character.find().populate('server class');
+        res.status(200).json(characters);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Erro ao buscar personagens' });
     }
 };
 
 
 const createCharacter = async (req, res) => {
     try {
-        const newCharacter = new Character(req.body);
+        const { name, level, magic, distance, axe, sword, club, shielding, server, class: characterClass } = req.body;
+
+        if (!name || !level || !server || !characterClass) {
+            return res.status(400).json({ message: 'Dados insuficientes para criar o personagem' });
+        }
+
+        const newCharacter = new Character({
+            name,
+            level,
+            magic,
+            distance,
+            axe,
+            sword,
+            club,
+            shielding,
+            server,
+            class: characterClass
+        });
+
         await newCharacter.save();
         res.status(201).json(newCharacter);
-    } catch (error){
-        res.status(400).json({message: error.message});
+    } catch (error) {
+        console.error(error);
+        res.status(400).json({ message: 'Erro ao criar personagem' });
     }
-}
+};
 
 
 const deleteCharacter = async (req, res) => {
