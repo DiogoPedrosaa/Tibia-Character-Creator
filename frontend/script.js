@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    fetch("http://localhost:5000/characters") // A URL do backend
+    fetch("http://localhost:5000/characters") 
         .then(response => response.json())
         .then(data => {
             const characterList = document.getElementById("character-list");

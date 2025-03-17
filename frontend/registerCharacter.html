@@ -4,59 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Personagem</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="container">
-        <h1>Cadastrar Personagem</h1>
+<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen">
+    <div class="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-lg">
+        <h1 class="text-2xl font-bold text-center mb-6">Cadastrar Personagem</h1>
         
-        <form id="register-form">
-            <div class="form-group">
-                <label for="name">Nome:</label>
-                <input type="text" id="name" name="name" required>
+        <form id="register-form" class="space-y-4">
+            <div>
+                <label for="name" class="block text-sm font-medium">Nome:</label>
+                <input type="text" id="name" name="name" required class="w-full p-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
-            <div class="form-group">
-                <label for="level">Nível:</label>
-                <input type="number" id="level" name="level" required>
+            <div>
+                <label for="level" class="block text-sm font-medium">Nível:</label>
+                <input type="number" id="level" name="level" required class="w-full p-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
-            <div class="form-group">
-                <label for="server">Servidor:</label>
-                <select id="server" name="server" required>
+            <div>
+                <label for="server" class="block text-sm font-medium">Servidor:</label>
+                <select id="server" name="server" required class="w-full p-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="">Escolha o servidor</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="class">Classe:</label>
-                <select id="class" name="class" required>
+            <div>
+                <label for="class" class="block text-sm font-medium">Classe:</label>
+                <select id="class" name="class" required class="w-full p-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="">Escolha a classe</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="magic">Magia:</label>
-                <input type="number" id="magic" name="magic">
-            </div>
-            <div class="form-group">
-                <label for="distance">Distância:</label>
-                <input type="number" id="distance" name="distance">
-            </div>
-            <div class="form-group">
-                <label for="axe">Axe:</label>
-                <input type="number" id="axe" name="axe">
-            </div>
-            <div class="form-group">
-                <label for="sword">Sword:</label>
-                <input type="number" id="sword" name="sword">
-            </div>
-            <div class="form-group">
-                <label for="club">Club:</label>
-                <input type="number" id="club" name="club">
-            </div>
-            <div class="form-group">
-                <label for="shielding">Shielding:</label>
-                <input type="number" id="shielding" name="shielding">
+            
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label for="magic" class="block text-sm font-medium">Magic:</label>
+                    <input type="number" id="magic" name="magic" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label for="distance" class="block text-sm font-medium">Distance:</label>
+                    <input type="number" id="distance" name="distance" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label for="axe" class="block text-sm font-medium">Axe:</label>
+                    <input type="number" id="axe" name="axe" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label for="sword" class="block text-sm font-medium">Sword:</label>
+                    <input type="number" id="sword" name="sword" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label for="club" class="block text-sm font-medium">Club:</label>
+                    <input type="number" id="club" name="club" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label for="shielding" class="block text-sm font-medium">Shielding:</label>
+                    <input type="number" id="shielding" name="shielding" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
             </div>
 
-            <button type="submit">Registrar Personagem</button>
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 transition p-2 rounded-md font-bold">Registrar Personagem</button>
         </form>
     </div>
 
