@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {
             const characterList = document.getElementById("character-list");
-            characterList.innerHTML = ""; // Limpa a lista antes de adicionar os personagens
+            characterList.innerHTML = ""; 
 
             data.forEach(character => {
                 const characterDiv = document.createElement("div");
@@ -58,7 +58,7 @@ function deleteCharacter(id, button) {
         return response.json();
     })
     .then(() => {
-        // Remove o card do personagem após a deleção
+
         const card = button.parentElement;
         card.remove();
     })
