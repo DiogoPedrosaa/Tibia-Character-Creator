@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {
             alert("Personagem registrado com sucesso!");
-            window.location.href = "index.html"; // Redireciona de volta para a lista
+            window.location.href = "index.html"; 
         })
         .catch(error => {
             console.error("Erro ao registrar personagem:", error);

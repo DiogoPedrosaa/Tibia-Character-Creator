@@ -15,6 +15,7 @@ app.use(express.static("public"));
 app.use("/characters", require("../routes/characterRoutes"));
 app.use("/servers", require("../routes/serverRoutes"));
 app.use("/classes", require("../routes/classRoutes"));
+app.use("/auth", require("../routes/authRoutes"));
 
 app.listen(5000, () =>{
     console.log(`servidor rodando na porta 5000`);
