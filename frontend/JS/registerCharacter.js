@@ -7,14 +7,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 const serverSelect = document.getElementById("server");
                 data.forEach(server => {
                     const option = document.createElement("option");
-                    option.value = server._id; // Assuming the server model has a unique _id
-                    option.textContent = server.name; // Assuming the server has a 'name' field
+                    option.value = server._id; 
+                    option.textContent = server.name; 
                     serverSelect.appendChild(option);
                 });
             })
             .catch(error => console.error("Erro ao carregar servidores:", error));
     }
-
 
     function loadClasses() {
         fetch("http://localhost:5000/classes")
@@ -23,8 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 const classSelect = document.getElementById("class");
                 data.forEach(characterClass => {
                     const option = document.createElement("option");
-                    option.value = characterClass._id; // Assuming the class model has a unique _id
-                    option.textContent = characterClass.name; // Assuming the class has a 'name' field
+                    option.value = characterClass._id;
+                    option.textContent = characterClass.name; 
                     classSelect.appendChild(option);
                 });
             })
@@ -34,9 +33,16 @@ document.addEventListener("DOMContentLoaded", () => {
     loadServers();
     loadClasses();
 
-
     document.getElementById("register-form").addEventListener("submit", function(e) {
         e.preventDefault();
+
+        const token = localStorage.getItem("jwt");
+
+        if (!token) {
+            alert("Você precisa estar logado para registrar um personagem.");
+            window.location.href = "login.html";
+            return;
+        }
 
         const name = document.getElementById("name").value;
         const level = document.getElementById("level").value;
@@ -65,17 +71,24 @@ document.addEventListener("DOMContentLoaded", () => {
         fetch("http://localhost:5000/characters", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
             },
             body: JSON.stringify(characterData)
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erro ao registrar personagem");
+            }
+            return response.json();
+        })
         .then(data => {
             alert("Personagem registrado com sucesso!");
             window.location.href = "index.html"; 
         })
         .catch(error => {
             console.error("Erro ao registrar personagem:", error);
+            alert("Erro ao registrar personagem. Verifique se você está autenticado.");
         });
     });
 });
